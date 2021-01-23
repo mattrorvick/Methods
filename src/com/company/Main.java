@@ -10,16 +10,63 @@ public class Main {
         int levelCompleted = 5;
         int bonus = 100;
 
-        calculateScore(gameOver, score, levelCompleted, bonus);
+        int highScore = calculateScore(gameOver, score, levelCompleted, bonus);
+        System.out.println("Your final score was " + highScore);
 
         score = 10000;
         levelCompleted = 8;
         bonus = 200;
 
-        calculateScore(gameOver, score, levelCompleted, bonus);
+        highScore = calculateScore(gameOver, score, levelCompleted, bonus);
+        System.out.println("Your final score was " + highScore);
 
-        // calculateScore(true, 10000, 8, 200);
+        //Create a method called displayHighScorePosition
+        //it should take players name as parameter and 2nd parameter as a position in high score table
+        //you should display players name along with message like "managed to get into position" and the
+        //position they got and a further message "on the high score table"
 
+        //create 2nd method called calculateHighScorePosition
+        //should be sent one argument only, the player score
+        //it should return an int
+        //the return data should be
+        // 1 if score is >=1000
+        // 2 if score is >=500 and <1000
+        // 3 if score is >=100 and <500
+        // 4 in all other cases
+        //call both methods and display the result of the following
+        // a score of 1500, 900, 400, and 50
+
+        int positionInTable = calculateHighScorePosition(1500);
+        displayHighScorePosition("Matt", positionInTable);
+
+        positionInTable = calculateHighScorePosition(900);
+        displayHighScorePosition("Tim", positionInTable);
+
+        positionInTable = calculateHighScorePosition(400);
+        displayHighScorePosition("Bob", positionInTable);
+
+        positionInTable = calculateHighScorePosition(50);
+        displayHighScorePosition("Percy", positionInTable);
+
+        positionInTable = calculateHighScorePosition(1000);
+        displayHighScorePosition("Louise", positionInTable);
+
+    }
+
+    public static void displayHighScorePosition(String playerName, int positionInTable) {
+        System.out.println(playerName + " managed to get into position " + positionInTable + " on the high score table.");
+    }
+
+    public static int calculateHighScorePosition(int pS) {
+        if (pS > 1000) {
+            return 1;
+        } else if (pS > 500 && pS < 1000) {
+            return 2;
+        } else if (pS > 100 && pS < 500) {
+            return 3;
+        } else {
+            return 4;
+        }
     }
 
     //this is a method, named calculateScore
@@ -29,8 +76,7 @@ public class Main {
 
         if(gameOver) {
             int finalScore = score + (levelCompleted * bonus);
-            finalScore += 1000;
-            System.out.println("Your final score was " + finalScore);
+            finalScore += 2000;
             return finalScore;
         }
         return -1;
