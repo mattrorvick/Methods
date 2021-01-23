@@ -51,22 +51,41 @@ public class Main {
         positionInTable = calculateHighScorePosition(1000);
         displayHighScorePosition("Louise", positionInTable);
 
-    }
+        positionInTable = calculateHighScorePosition(500);
+        displayHighScorePosition("Ben", positionInTable);
 
+        positionInTable = calculateHighScorePosition(100);
+        displayHighScorePosition("Rick", positionInTable);
+
+    }
+    // void doesn't return anything
     public static void displayHighScorePosition(String playerName, int positionInTable) {
         System.out.println(playerName + " managed to get into position " + positionInTable + " on the high score table.");
     }
 
+    // must return an int
     public static int calculateHighScorePosition(int pS) {
-        if (pS > 1000) {
-            return 1;
-        } else if (pS > 500 && pS < 1000) {
-            return 2;
-        } else if (pS > 100 && pS < 500) {
-            return 3;
-        } else {
-            return 4;
+
+//        if (pS >= 1000) {
+//            return 1;
+//        } else if (pS >= 500) {
+//            return 2;
+//        } else if (pS >= 100) {
+//            return 3;
+//        }
+//
+//        return 4;
+        int position = 4; // assuming position 4 will be returned
+
+        if(pS >= 1000) {
+            position = 1;
+        } else if (pS >= 500) {
+            position = 2;
+        } else if (pS >= 100) {
+            position = 3;
         }
+        return position;
+
     }
 
     //this is a method, named calculateScore
